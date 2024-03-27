@@ -75,15 +75,7 @@ class IsolationProvider(ABC):
                     self._convert(document, t, ocr_lang, conversion_proc)
                 finally:
                     if getattr(sys, "dangerzone_dev", False):
-                        assert conversion_proc.stderr
-                        conversion_proc.wait(3)
-                        untrusted_log = read_debug_text(
-                            conversion_proc.stderr, MAX_CONVERSION_LOG_CHARS
-                        )
-                        conversion_proc.stderr.close()
-                        log.info(
-                            f"Conversion output (doc to pixels)\n{self.sanitize_conversion_str(untrusted_log)}"
-                        )
+                        self.print_debug_text(conversion_proc)
             document.mark_as_safe()
             if document.archive_after_conversion:
                 document.archive()
@@ -272,6 +264,18 @@ class IsolationProvider(ABC):
         armor_start = f"{DOC_TO_PIXELS_LOG_START}\n"
         armor_end = DOC_TO_PIXELS_LOG_END
         return armor_start + conversion_string + armor_end
+
+    def print_debug_text(self, conversion_proc: subprocess.Popen):
+        """Print the stderr of the conversion process."""
+        assert conversion_proc.stderr
+        conversion_proc.wait(3)
+        untrusted_log = read_debug_text(
+            conversion_proc.stderr, MAX_CONVERSION_LOG_CHARS
+        )
+        conversion_proc.stderr.close()
+        log.info(
+            f"Conversion output (doc to pixels)\n{self.sanitize_conversion_str(untrusted_log)}"
+        )
 
     @abstractmethod
     def start_doc_to_pixels_proc(self) -> subprocess.Popen:
