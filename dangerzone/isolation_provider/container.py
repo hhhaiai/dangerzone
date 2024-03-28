@@ -153,7 +153,6 @@ class Container(IsolationProvider):
         if self.get_runtime_name() == "podman":
             security_args = ["--log-driver", "none"]
             security_args += ["--security-opt", "no-new-privileges"]
-            security_args += ["--userns", "keep-id"]
         else:
             security_args = ["--security-opt=no-new-privileges:true"]
 
