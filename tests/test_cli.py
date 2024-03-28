@@ -191,7 +191,7 @@ class TestCliBasic(TestCli):
         result = self.run_cli("--version")
         result.assert_success()
 
-        with open("share/version.txt") as f:
+        with open("share/resources/version.txt") as f:
             version = f.read().strip()
             assert version in result.stdout
 

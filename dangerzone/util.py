@@ -68,7 +68,7 @@ def get_tessdata_dir() -> str:
 
 def get_version() -> str:
     try:
-        with open(get_resource_path("version.txt")) as f:
+        with open(get_resource_path("resources/version.txt")) as f:
             version = f.read().strip()
     except FileNotFoundError:
         # In dev mode, in Windows, get_resource_path doesn't work properly for the container, but luckily

@@ -68,7 +68,7 @@ class Container(IsolationProvider):
         )
 
         chunk_size = 10240
-        compressed_container_path = get_resource_path("container.tar.gz")
+        compressed_container_path = get_resource_path("container/container.tar.gz")
         with gzip.open(compressed_container_path) as f:
             while True:
                 chunk = f.read(chunk_size)
@@ -92,7 +92,7 @@ class Container(IsolationProvider):
         See if the podman container is installed. Linux only.
         """
         # Get the image id
-        with open(get_resource_path("image-id.txt")) as f:
+        with open(get_resource_path("container/image-id.txt")) as f:
             expected_image_id = f.read().strip()
 
         # See if this image is already installed

@@ -10,7 +10,7 @@ Before making a release, all of these should be complete:
 - [ ] Bump the Python dependencies using `poetry lock`
 - [ ] [Check for new PySide6 versions](#check-for-new-pyside6-versions)
 - [ ] Update `version` in `pyproject.toml`
-- [ ] Update `share/version.txt`
+- [ ] Update `share/resources/version.txt`
 - [ ] Update the "Version" field in `install/linux/dangerzone.spec`
 - [ ] Update version and download links in `README.md`, and screenshot if necessary
 - [ ] CHANGELOG.md should be updated to include a list of all major changes since the last release
@@ -332,7 +332,7 @@ The Windows release is performed in a Windows 11 virtual machine as opposed to a
 - [ ] Run `poetry install`
 - [ ] Copy the container image into the VM
   > [!IMPORTANT]
-  > Instead of running `python .\install\windows\build-image.py` in the VM, run the build image script on the host (making sure to build for `linux/amd64`). Copy `share/container.tar.gz` and `share/image-id.txt` from the host into the `share` folder in the VM
+  > Instead of running `python .\install\windows\build-image.py` in the VM, run the build image script on the host (making sure to build for `linux/amd64`). Copy `share/container/container.tar.gz` and `share/container/image-id.txt` from the host into the `share` folder in the VM
 - [ ] Run `poetry run .\install\windows\build-app.bat`
 - [ ] When you're done you will have `dist\Dangerzone.msi`
 

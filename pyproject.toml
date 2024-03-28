@@ -6,7 +6,9 @@ authors = ["Freedom of the Press Foundation <info@freedom.press>", "Micah Lee <m
 license = "AGPL-3.0"
 # NOTE: See also https://github.com/freedomofpress/dangerzone/issues/677
 include = [
-    { path = "share/*", format = "sdist" },
+    { path = "share/images/*", format = "sdist" },
+    { path = "share/resources/*", format = "sdist" },
+    { path = "share/container/*", format = "sdist" },
     { path = "qubes/*", format = "sdist" },
     { path = "install/linux/press.freedom.dangerzone.*", format = "sdist" },
     { path = "README.md", format = "sdist" },

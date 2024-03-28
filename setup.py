@@ -4,7 +4,7 @@ import sys
 
 import setuptools
 
-with open("share/version.txt") as f:
+with open("share/resources/version.txt") as f:
     version = f.read().strip()
 
 
@@ -26,7 +26,9 @@ def data_files_list():
             "share/icons/hicolor/64x64/apps",
             ["install/linux/press.freedom.dangerzone.png"],
         ),
-        ("share/dangerzone", file_list("share")),
+        ("share/dangerzone/resources", file_list("share/resources")),
+        ("share/dangerzone/images", file_list("share/images")),
+        ("share/dangerzone/container", file_list("share/container")),
     ]
     return data_files
 

@@ -823,7 +823,7 @@ class QALinux(QABase):
     def build_container_image(self):
         self.shell_run("python3 ./install/common/build-image.py")
         # FIXME: We need to automate this part, simply by checking that the created
-        # image is in `share/image-id.txt`.
+        # image is in `share/container/image-id.txt`.
         self.prompt("Ensure that the environment uses the created image")
 
     @QABase.task("Run tests", ref="REF_BUILD", auto=True)

@@ -11,18 +11,22 @@ root = os.path.dirname(
         os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     )
 )
-with open(os.path.join(root, "share", "version.txt")) as f:
+with open(os.path.join(root, "share", "resources", "version.txt")) as f:
     version = f.read().strip()
 
 print("Dangerzone version: {}".format(version))
 
+datas = [
+    ("../../share/tessdata", "share/tessdata"),
+    ("../../share/images", "share/images"),
+    ("../../share/resources", "share/resources"),
+]
+
 if p == "Darwin":
-    datas = [("../../share", "share"), ("../macos/document.icns", ".")]
-else:
-    datas = [("../../share", "share")]
+    datas += [("../macos/document.icns", ".")]
 
 if p == "Windows":
-    icon = os.path.join(root, "share", "dangerzone.ico")
+    icon = os.path.join(root, "share", "images", "dangerzone.ico")
 else:
     icon = None
 

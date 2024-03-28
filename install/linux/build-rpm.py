@@ -10,7 +10,7 @@ import tempfile
 
 root = pathlib.Path(__file__).parent.parent.parent
 
-with open(os.path.join(root, "share", "version.txt")) as f:
+with open(os.path.join(root, "share", "resources", "version.txt")) as f:
     version = f.read().strip()
 
 
@@ -33,8 +33,8 @@ def build(qubes=False):
     2. Create the necessary RPM project structure under ./install/linux/rpm-build, and
        use symlinks to point to ./dist, so that we don't need to move files explicitly.
     3. Create a Python source distribution using `poetry build`. If we are building a
-       Qubes package and there is a container image under `share/`, stash it temporarily
-       under a different directory.
+       Qubes package and there is a container image under `share/container`, stash it
+       temporarily under a different directory.
     4. Build both binary and source RPMs using rpmbuild. Optionally, pass to the SPEC
         `_qubes` flag, that denotes we want to build a package for Qubes.
     """
@@ -65,7 +65,7 @@ def build(qubes=False):
     os.symlink(dist_path, srpm_dir)
 
     print("* Creating a Python sdist")
-    container_tar_gz = root / "share" / "container.tar.gz"
+    container_tar_gz = root / "share" / "container" / "container.tar.gz"
     container_tar_gz_bak = root / "container.tar.gz.bak"
     stash_container = qubes and container_tar_gz.exists()
     if stash_container:

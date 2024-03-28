@@ -33,7 +33,7 @@ def main():
     tessdata_dir = share_dir / "tessdata"
 
     # Get the list of OCR languages that Dangerzone supports.
-    with open(share_dir / "ocr-languages.json") as f:
+    with open(share_dir / "resources" / "ocr-languages.json") as f:
         langs_short = sorted(json.loads(f.read()).values())
 
     # Check if these languages have already been downloaded.

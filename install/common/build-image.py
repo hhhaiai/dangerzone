@@ -26,7 +26,7 @@ def main():
     parser.add_argument(
         "--no-save",
         action="store_true",
-        help="Do not save the container image as a tarball in share/container.tar.gz",
+        help="Do not save the container image as a tarball in share/container/container.tar.gz",
     )
     parser.add_argument(
         "--compress-level",
@@ -79,7 +79,7 @@ def main():
             print("Compressing container image")
             chunk_size = 4 << 20
             with gzip.open(
-                "share/container.tar.gz",
+                "share/container/container.tar.gz",
                 "wb",
                 compresslevel=args.compress_level,
             ) as gzip_f:
@@ -103,7 +103,7 @@ def main():
         ],
         text=True,
     )
-    with open("share/image-id.txt", "w") as f:
+    with open("share/container/image-id.txt", "w") as f:
         f.write(image_id)
 
 

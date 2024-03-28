@@ -58,9 +58,9 @@ class DangerzoneGui(DangerzoneCore):
 
     def get_window_icon(self) -> QtGui.QIcon:
         if platform.system() == "Windows":
-            path = get_resource_path("dangerzone.ico")
+            path = get_resource_path("images/dangerzone.ico")
         else:
-            path = get_resource_path("icon.png")
+            path = get_resource_path("images/icon.png")
         return QtGui.QIcon(path)
 
     def open_pdf_viewer(self, filename: str) -> None:
@@ -215,7 +215,7 @@ class Alert(Dialog):
     def create_layout(self) -> QtWidgets.QBoxLayout:
         logo = QtWidgets.QLabel()
         logo.setPixmap(
-            QtGui.QPixmap.fromImage(QtGui.QImage(get_resource_path("icon.png")))
+            QtGui.QPixmap.fromImage(QtGui.QImage(get_resource_path("images/icon.png")))
         )
 
         label = QtWidgets.QLabel()

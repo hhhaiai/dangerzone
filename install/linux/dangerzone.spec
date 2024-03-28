@@ -240,11 +240,19 @@ sed -i 's/^PySide6.*$/PySide2 = "*"/' pyproject.toml
 # pyproject_save_files.
 install -m 755 -d %{buildroot}/usr/share/
 install -m 755 -d %{buildroot}/usr/share/applications/
-install -m 755 -d %{buildroot}/usr/share/dangerzone/
+install -m 755 -d %{buildroot}/usr/share/dangerzone/resources
+install -m 755 -d %{buildroot}/usr/share/dangerzone/images
 install -m 755 -d %{buildroot}/usr/share/pixmaps/
 install -m 644 install/linux/press.freedom.dangerzone.desktop %{buildroot}/usr/share/applications/
 install -m 644 install/linux/press.freedom.dangerzone.png %{buildroot}/usr/share/pixmaps/
-install -m 644 share/* %{buildroot}/usr/share/dangerzone
+install -m 644 share/resources/* %{buildroot}/usr/share/dangerzone/resources
+install -m 644 share/images/* %{buildroot}/usr/share/dangerzone/images
+%if 0%{?_qubes}
+%else
+install -m 755 -d %{buildroot}/usr/share/dangerzone/container/
+install -m 644 share/container/container.tar.gz %{buildroot}/usr/share/dangerzone/container
+install -m 644 share/container/image-id.txt %{buildroot}/usr/share/dangerzone/container
+%endif
 
 # In case we create a package for Qubes, add some extra files under
 # /etc/qubes-rpc.

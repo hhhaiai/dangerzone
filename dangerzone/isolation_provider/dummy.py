@@ -63,7 +63,7 @@ class Dummy(IsolationProvider):
             time.sleep(0.2)
         if success:
             shutil.copy(
-                get_resource_path("dummy_document.pdf"), document.output_filename
+                get_resource_path("resources/dummy_document.pdf"), document.output_filename
             )
         document.mark_as_safe()
         if document.archive_after_conversion:

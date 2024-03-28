@@ -74,7 +74,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Header
         logo = QtWidgets.QLabel()
         logo.setPixmap(
-            QtGui.QPixmap.fromImage(QtGui.QImage(get_resource_path("icon.png")))
+            QtGui.QPixmap.fromImage(QtGui.QImage(get_resource_path("images/icon.png")))
         )
         header_label = QtWidgets.QLabel("Dangerzone")
         header_label.setFont(self.dangerzone.fixed_font)
@@ -174,7 +174,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         This answer is basically taken from: https://stackoverflow.com/a/25689790
         """
-        path = get_resource_path(filename)
+        path = get_resource_path(f"images/{filename}")
         svg_renderer = QtSvg.QSvgRenderer(path)
         image = QtGui.QImage(64, 64, QtGui.QImage.Format_ARGB32)
         # Set the ARGB to 0 to prevent rendering artifacts
@@ -1028,7 +1028,7 @@ class DocumentWidget(QtWidgets.QWidget):
             self.progress.setValue(percentage)
 
     def load_status_image(self, filename: str) -> QtGui.QPixmap:
-        path = get_resource_path(filename)
+        path = get_resource_path(f"images/{filename}")
         img = QtGui.QImage(path)
         image = QtGui.QPixmap.fromImage(img)
         return image.scaled(QtCore.QSize(15, 15))

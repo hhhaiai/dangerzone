@@ -66,8 +66,8 @@ aliases:
   - &copy-image
     name: Copy container image into package
     command: |
-      cp /caches/container.tar.gz share/
-      cp /caches/image-id.txt share/
+      cp /caches/container.tar.gz share/container/
+      cp /caches/image-id.txt share/container/
 
 jobs:
   run-lint:

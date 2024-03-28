@@ -14,7 +14,7 @@ root = os.path.dirname(
     )
 )
 
-with open(os.path.join(root, "share", "version.txt")) as f:
+with open(os.path.join(root, "share", "resources", "version.txt")) as f:
     version = f.read().strip()
 
 

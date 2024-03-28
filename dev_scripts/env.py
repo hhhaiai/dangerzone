@@ -301,7 +301,7 @@ def image_name_install(distro, version):
 
 def dz_version():
     """Get the current Dangerzone version."""
-    with open(git_root() / "share/version.txt") as f:
+    with open(git_root() / "share/resources/version.txt") as f:
         return f.read().strip()
 
 

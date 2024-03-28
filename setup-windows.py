@@ -3,7 +3,7 @@ import os
 
 from cx_Freeze import Executable, setup
 
-with open("share/version.txt") as f:
+with open("share/resources/version.txt") as f:
     version = f.read().strip()
 
 packages = ["dangerzone", "dangerzone.gui"]
@@ -19,7 +19,12 @@ setup(
         "build_exe": {
             "packages": packages,
             "excludes": ["test", "tkinter"],
-            "include_files": [("share", "share"), ("LICENSE", "LICENSE")],
+            "include_files": [
+                ("share/resources", "share/resources"),
+                ("share/images", "share/images"),
+                ("share/tessdata", "share/tessdata"),
+                ("share/container", "share/container"),
+                ("LICENSE", "LICENSE")],
             "include_msvcr": True,
         }
     },
@@ -27,10 +32,10 @@ setup(
         Executable(
             "install/windows/dangerzone.py",
             base="Win32GUI",
-            icon="share/dangerzone.ico",
+            icon="share/images/dangerzone.ico",
         ),
         Executable(
-            "install/windows/dangerzone-cli.py", base=None, icon="share/dangerzone.ico"
+            "install/windows/dangerzone-cli.py", base=None, icon="share/images/dangerzone.ico"
         ),
     ],
 )

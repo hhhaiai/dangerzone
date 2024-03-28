@@ -118,10 +118,11 @@ def main():
     version_filename = os.path.join(
         os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
         "share",
+        "resources",
         "version.txt",
     )
     with open(version_filename) as f:
-        # Read the Dangerzone version from share/version.txt, and remove any potential
+        # Read the Dangerzone version from share/resources/version.txt, and remove any potential
         # -rc markers.
         version = f.read().strip().split("-")[0]
 
@@ -184,7 +185,7 @@ def main():
     )
     ET.SubElement(product_el, "Media", Id="1", Cabinet="product.cab", EmbedCab="yes")
     ET.SubElement(
-        product_el, "Icon", Id="ProductIcon", SourceFile="..\\share\\dangerzone.ico"
+        product_el, "Icon", Id="ProductIcon", SourceFile="..\\share\\images\\dangerzone.ico"
     )
     ET.SubElement(product_el, "Property", Id="ARPPRODUCTICON", Value="ProductIcon")
     ET.SubElement(

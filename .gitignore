@@ -22,7 +22,7 @@ var/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
-share/tessdata/
+share/tessdata/*
 *.egg-info/
 .installed.cfg
 *.egg
@@ -136,7 +136,5 @@ deb_dist
 tests/test_docs/**/*-safe.pdf
 tests/test_docs_large/
 install/windows/Dangerzone.wxs
-share/container.tar
-share/container.tar.gz
-share/image-id.txt
+share/container/*
 container/container-pip-requirements.txt
