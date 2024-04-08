@@ -88,7 +88,7 @@ def get_supported_extensions() -> List[str]:
         ".jpeg",
         ".gif",
         ".png",
-        " .tif",
+        ".tif",
         ".tiff",
         ".bmp",
         ".pnm",
@@ -611,7 +611,7 @@ class DocSelectionWidget(QtWidgets.QWidget):
         self.file_dialog.setWindowTitle("Open Documents")
         self.file_dialog.setFileMode(QtWidgets.QFileDialog.ExistingFiles)
         self.file_dialog.setNameFilters(
-            [f"Documents (*" + " *".join(get_supported_extensions()) + ")"]
+            ["Documents (*" + " *".join(get_supported_extensions()) + ")"]
         )
 
     def dangerous_doc_button_clicked(self) -> None:
@@ -652,7 +652,7 @@ class DocSelectionDropFrame(QtWidgets.QFrame):
         self.setAcceptDrops(True)
 
         self.document_image_text = QtWidgets.QLabel(
-            "Drag and drop\n documents here\n\n or"
+            "Drag and drop\ndocuments here\n\nor"
         )
         self.document_image_text.setAlignment(QtCore.Qt.AlignCenter)
         self.document_image = QtWidgets.QLabel()
@@ -701,19 +701,19 @@ class DocSelectionDropFrame(QtWidgets.QFrame):
 
     def prompt_continue_without(self, num_unsupported_docs: int) -> int:
         """
-        Prompt the use if they want to convert even though some files are not
+        Prompt the user if they want to convert even though some files are not
         supported.
         """
         if num_unsupported_docs == 1:
-            text = f"{num_unsupported_docs} file is not supported."
+            text = "1 file is not supported."
             ok_text = "Continue without this file"
         else:  # plural
             text = f"{num_unsupported_docs} files are not supported."
-            ok_text = "Continue without these file"
+            ok_text = "Continue without these files"
 
         alert_widget = Alert(
             self.dangerzone,
-            message=f"{text}\n The supported extensions are: "
+            message=f"{text}\nThe supported extensions are: "
             + ", ".join(get_supported_extensions()),
             ok_text=ok_text,
         )
