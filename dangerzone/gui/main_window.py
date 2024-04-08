@@ -688,12 +688,16 @@ class DocSelectionDropFrame(QtWidgets.QFrame):
             if doc_ext in get_supported_extensions():
                 documents += [Document(doc_path)]
 
-        # Ignore when all docs are unsupported
-        num_unsupported_docs = len(ev.mimeData().urls()) - len(documents)
-        if len(documents) == 0 or num_unsupported_docs == len(ev.mimeData().urls()):
+        # Ignore anything dropped that's not a file (e.g. text)
+        if len(documents) == 0:
             return
 
-        # Confirm with user when some docs were ignored
+        # Ignore when all dropped files are unsupported
+        num_unsupported_docs = len(ev.mimeData().urls()) - len(documents)
+        if num_unsupported_docs == len(ev.mimeData().urls()):
+            return
+
+        # Confirm with user when _some_ docs were ignored
         if num_unsupported_docs > 0:
             if not self.prompt_continue_without(num_unsupported_docs):
                 return
