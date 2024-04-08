@@ -682,10 +682,11 @@ class DocSelectionDropFrame(QtWidgets.QFrame):
     def dropEvent(self, ev: QtGui.QDropEvent) -> None:
         ev.setDropAction(QtCore.Qt.CopyAction)
         documents = []
+        supported_exts = get_supported_extensions()
         for url_path in ev.mimeData().urls():
             doc_path = url_path.toLocalFile()
             doc_ext = os.path.splitext(doc_path)[1]
-            if doc_ext in get_supported_extensions():
+            if doc_ext in supported_exts:
                 documents += [Document(doc_path)]
 
         # Ignore anything dropped that's not a file (e.g. text)
