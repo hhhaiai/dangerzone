@@ -565,6 +565,8 @@ class Env:
             elif self.distro == "ubuntu" and self.version in (
                 "23.10",
                 "mantic",
+                "24.04",
+                "noble",
             ):
                 install_deps = (
                     DOCKERFILE_UBUNTU_REM_USER + DOCKERFILE_BUILD_DEV_DEBIAN_DEPS
