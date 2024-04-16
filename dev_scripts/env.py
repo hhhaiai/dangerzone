@@ -17,9 +17,11 @@ DEFAULT_DEV = False
 DEFAULT_SHOW_DOCKERFILE = False
 DEFAULT_DOWNLOAD_PYSIDE6 = False
 
+PYSIDE6_VERSION ="6.6.3.1"
 PYSIDE6_RPM = "python3-pyside6-{pyside6_version}-1.fc{fedora_version}.x86_64.rpm"
 PYSIDE6_URL = (
-    "https://packages.freedom.press/yum-tools-prod/dangerzone/f{fedora_version}/%s"
+    #"https://packages.freedom.press/yum-tools-prod/dangerzone/f{fedora_version}/%s"
+    "https://github.com/freedomofpress/yum-tools-prod/raw/db4a1faecc4835c8f38580cb50f53f6d81bcaf40/dangerzone/f{fedora_version}/%s"
     % PYSIDE6_RPM
 )
 
@@ -322,20 +324,7 @@ class PySide6Manager:
     @property
     @functools.lru_cache
     def version(self):
-        """Retrieve the PySide6 version from poetry.lock.
-
-        Read the poetry.lock file, and grep the version of the PySide6 library. The
-        results of this method call are cached, so we can call it repeatedly without any
-        performance cost.
-        """
-        # FIXME: I don't like regexes, but problem is that `tomllib` is not present in
-        # Python < 3.11. So, since we don't want to rely on an external library yet, we
-        # have to resort to regexes. Note that the regex we choose uses Shiboken6,
-        # mainly because the PySide6 package and its version are in different lines.
-        with open(git_root() / "poetry.lock") as f:
-            toml = f.read()
-            match = re.search(r'^shiboken6 = "([\d.]+)"$', toml, re.MULTILINE)
-            return match.groups()[0]
+        return PYSIDE6_VERSION
 
     @property
     def rpm_name(self):
